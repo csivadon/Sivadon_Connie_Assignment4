@@ -74,7 +74,18 @@ var sivadonLibrary = function () {
         return true;   
     }
 
-    // 
+    // Title-case String Function
+    
+    var getTitleCase = function (string) {
+    
+    var str = string.split(" ");
+    
+    for(var i=0,l=str.length; i<l; i++) {
+        str[i] = str[i].substr(0,1).toUpperCase() + 
+                 (str[i].length > 1 ? str[i].substr(1).toLowerCase() : "");
+    }
+    return str.join(" ");
+    }
 
 
 
@@ -82,7 +93,9 @@ var sivadonLibrary = function () {
         
     "checkPhoneNumber":     checkPhoneNumber,
     "checkEmailAddress":    checkEmailAddress,
-    "checkUrl":             checkUrl
+    "checkUrl":             checkUrl,
+    "getTitleCase":         getTitleCase
+    
     }
 
 
@@ -96,3 +109,4 @@ var newLib = new sivadonLibrary;
 console.log("Is this a phone number? " + newLib.checkPhoneNumber("123-456-7890"));
 console.log("Is this an email address? " + newLib.checkEmailAddress("csivadon@fullsail.edu"));
 console.log("Is this a website? " + newLib.checkUrl("http://wwww.mywebsite.com"));
+console.log(newLib.getTitleCase("this should show the first letter of each word capitalized."));
