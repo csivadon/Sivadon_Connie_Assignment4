@@ -100,22 +100,27 @@ var sivadonLibrary = function () {
             str[i] = str[i].replace(o,n); 
             
         }
-        
         return str.join("");
-
     }
 
+    // Format number Function
+    
+    var formatNumber = function (number,fixed) {
+        
+        var newNumber = number.toFixed(fixed);
+        return newNumber;
+    }
+    
     return {
         
     "checkPhoneNumber":     checkPhoneNumber,
     "checkEmailAddress":    checkEmailAddress,
     "checkUrl":             checkUrl,
     "getTitleCase":         getTitleCase,
-    "replaceSeparator":     replaceSeparator
+    "replaceSeparator":     replaceSeparator,
+    "formatNumber":         formatNumber
     
     }
-
-
 
 }
 
@@ -128,3 +133,4 @@ console.log("Is this an email address? " + newLib.checkEmailAddress("csivadon@fu
 console.log("Is this a website? " + newLib.checkUrl("http://wwww.mywebsite.com"));
 console.log(newLib.getTitleCase("this should show the first letter of each word capitalized."));
 console.log("a,1,b,2,c,3 is now " + newLib.replaceSeparator("a,1,b,2,c,3",",","/"));
+console.log("45.671234 is now: " + newLib.formatNumber(45.671234,3));
