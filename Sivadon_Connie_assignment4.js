@@ -78,23 +78,40 @@ var sivadonLibrary = function () {
     
     var getTitleCase = function (string) {
     
-    var str = string.split(" ");
+        var str = string.split(" ");
     
-    for(var i=0,l=str.length; i<l; i++) {
+        for(var i=0,l=str.length; i<l; i++) {
         str[i] = str[i].substr(0,1).toUpperCase() + 
                  (str[i].length > 1 ? str[i].substr(1).toLowerCase() : "");
-    }
-    return str.join(" ");
+        }
+        return str.join(" ");
     }
 
+    // Replace String Separator
+    
+    var replaceSeparator = function (string, oldVal, newVal) {
+        
+        var str = string.split("");
+        var o = oldVal;
+        var n = newVal;
+        
+        for(var i=0, l=str.length; i<l; i++) {
+             
+            str[i] = str[i].replace(o,n); 
+            
+        }
+        
+        return str.join("");
 
+    }
 
     return {
         
     "checkPhoneNumber":     checkPhoneNumber,
     "checkEmailAddress":    checkEmailAddress,
     "checkUrl":             checkUrl,
-    "getTitleCase":         getTitleCase
+    "getTitleCase":         getTitleCase,
+    "replaceSeparator":     replaceSeparator
     
     }
 
@@ -110,3 +127,4 @@ console.log("Is this a phone number? " + newLib.checkPhoneNumber("123-456-7890")
 console.log("Is this an email address? " + newLib.checkEmailAddress("csivadon@fullsail.edu"));
 console.log("Is this a website? " + newLib.checkUrl("http://wwww.mywebsite.com"));
 console.log(newLib.getTitleCase("this should show the first letter of each word capitalized."));
+console.log("a,1,b,2,c,3 is now " + newLib.replaceSeparator("a,1,b,2,c,3",",","/"));
